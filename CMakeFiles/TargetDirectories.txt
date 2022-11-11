@@ -1,0 +1,3 @@
+/home/mindmirage/code/c/salesman/CMakeFiles/salesman.dir
+/home/mindmirage/code/c/salesman/CMakeFiles/edit_cache.dir
+/home/mindmirage/code/c/salesman/CMakeFiles/rebuild_cache.dir

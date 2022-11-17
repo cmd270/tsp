@@ -88,7 +88,7 @@ void preciseMethod(int** const graph, int const *size){
         reshuffle[*size] = 0;
         way = 0;
         for(int i = 0; i < *size; ++i){
-            way += graph[reshuffle[i]][reshuffle[i+1]];
+            way += graph[reshuffle[i]][reshuffle[i+1]]; // ss
         }
         printf("way is %d\n", way);
         if(way < minimalWay){

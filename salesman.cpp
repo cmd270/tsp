@@ -5,6 +5,7 @@
 #include <ctime>
 #include <math.h>
 #include <iostream>
+#include <string>
 #include <utility>
 #define X 1280
 #define Y 720
@@ -100,24 +101,31 @@ void preciseMethod(int** const graph, int const *size){
 }
 //TODO : greedyMethod
 void greedyMethod(int** const graph, int const *size){
-    int** const graphCopy = graph;
-    int way,min,from,to = 0;
-    for(int i = 0; i < *size; ++i){
-        puts("----------------------------------");
-        for(int j = 0; j < *size+1;++j){
-            if(i != j){
-                if(graphCopy[from][j] < graphCopy[from][j+1] && graphCopy[from][j] != -1){ // seg fault
-                    min = graphCopy[from][j];
-                    from = i;
+    int** graphCopy = graph;
+    int way = 0;
+    int from = 0;
+    int to = 0;
+    std::string path = std::to_string(from+1)+"-";
+    for(int i = 0; i < *size -1 ; ++i){
+        int minimalPath = 1e5* *size;
+        for(int j = 1; j < *size; ++j){
+            if(from != j){
+                if(minimalPath > graphCopy[from][j] && graphCopy[from][j] != -1){
+                    minimalPath = graphCopy[from][j];
                     to = j;
                 }
             }
         }
-        for(int k = 0; k < *size; ++k){
+        for(int k = 0; k < *size; ++k){ // no way
             graphCopy[k][to] = -1;
         }
-        way += min;
+        way += minimalPath;
         from = to;
-        showGraph(graphCopy, size);
+        path += std::to_string(from+1);
+        path += "-";
     }
+    way += graphCopy[from][0];
+    path += "1";
+    printf("minimalWay - %d\n",way);
+    std:: cout << "path is " << path << std::endl;
 }

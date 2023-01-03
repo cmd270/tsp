@@ -1,131 +1,105 @@
 #include <algorithm>
-#include <cstdlib>
 #include <stdio.h>
-#include <cstddef>
 #include <ctime>
 #include <math.h>
 #include <iostream>
-#include <string>
-#include <utility>
+#include <limits.h>
+
 #define X 1280
 #define Y 720
 
-int** generateGraphByCoord(int const *size);
-int** generateGraph(int const *size);
-void showGraph(int** const graph,int const *size);
-void preciseMethod(int** const graph, int const *size);
-void greedyMethod(int** const graph, int const *size);
+void generate_graph(int const size);
+void show_graph(int const size);
+void precise_method(int const size); // Метод перебора (точный)
+void greedy_method( int const size); // Жадный метод (неточный)
 
-int main(){
-    int size = 5;
-    int **graph = generateGraphByCoord(&size);
-    showGraph(graph,&size);
-    //preciseMethod(graph, &size);
-    greedyMethod(graph,&size);
-    delete[] graph;
-   return 0;
+int graph[100][100];    // Граф максимального числа городов
+int size = 5;           // Счетчик городов
+
+int main(void){
+    generate_graph(size);
+    show_graph(size);
+    precise_method(size);
+    //greedy_method(size);
 }
 
-int** generateGraphByCoord(int const *size){
-    std::srand(std::time(NULL));
-    int **graph = new int* [*size];
-    std::pair <int,int> points[*size];
-    for(int i = 0; i < *size; ++i){
-        graph[i]=new int[*size];
-        points[i] = std::make_pair(std::rand() % X + 1,std::rand() % Y + 1);
-        printf("%d point have coord\nx=%d\ny=%d\n",i+1,points[i].first,points[i].second);
+void generate_graph(int const size){
+    std::pair <int,int> points[size];   // Заводим массив пар точек(x,y)
+    for(int i = 0; i < size; ++i){      
+        points[i] = std::make_pair(std::rand() % X + 1,std::rand() % Y + 1); // Создаем случайно точку ограниченую по констам X и Y
+        printf("%d. (%d,%d)\n",i+1,points[i].first,points[i].second);
     }
-        for(int i = 0; i < *size; ++i){
-            for(int j = i+1; j < *size;++j){
-                graph[i][j] = (int)ceil(sqrt(pow(points[i].first - points[j].first, 2) + pow(points[i].second - points[j].second, 2)));
-                graph[j][i] = graph[i][j];
-            }
+    for(int i = 0; i < size; ++i){
+        for(int j = i+1; j < size;++j){
+            graph[i][j] =   (int)ceil(sqrt(pow(points[i].first - points[j].first, 2)
+                            + pow(points[i].second - points[j].second, 2))); // Эквивалент рассчета расстояния между точками
+            graph[j][i] = graph[i][j];
         }
-   return graph;
+    }
 }
 
-int** generateGraph(int const *size){
-   int **graph = new int* [*size];
-   for(int i = 0; i < *size; ++i){
-       graph[i]=new int[*size];
-   }
-   std::srand(std::time(NULL));
-   for(int i = 0; i < *size; ++i){
-       for(int j = 0; j < *size;++j){
-           if(i == j){
-               graph[i][j] = 0;
-           }
-           else{
-              graph[i][j] = std::rand() % 100 + 1;
-              graph[j][i] = graph[i][j];
-           }
-       }
-   }
-   return graph;
+void show_graph(int const size){
+    for(int i = 0; i < size; ++i){
+        for(int j = 0; j < size; ++j){
+            printf("%10d",graph[i][j]);
+        }
+        puts("");
+    }
 }
 
-void showGraph(int** const graph,int const *size){
-   ptrdiff_t i,j;
-   for(i = 0; i < *size; ++i){
-       for(j = 0; j < *size; ++j){
-           printf("%10d",graph[i][j]);
-       }
-       puts("");
-   }
-}
-
-void preciseMethod(int** const graph, int const *size){
-    int way = 0;
-    int minimalWay = 1e5 * *size;
-    int* reshuffle = new int[*size+1];
-    for(int i = 0; i < *size; ++i){
+void precise_method(int const size){
+    int tour_len = 0;
+    int minimal_tour = INT_MAX;
+    int* reshuffle = new int[size+1];
+    for(int i = 0; i < size; ++i){
         reshuffle[i] = i;
     }
-    reshuffle[*size] = 0;
+    reshuffle[size] = 0;
     do{
-        for(int i = 0; i < *size + 1; ++i){
-            printf("%d - ",reshuffle[i]+1);
+        printf("[ ");
+        for(int i = 0; i < size + 1; ++i){
+            printf("%d ",reshuffle[i]+1);
         }
-        reshuffle[*size] = 0;
-        way = 0;
-        for(int i = 0; i < *size; ++i){
-            way += graph[reshuffle[i]][reshuffle[i+1]]; // ss
+        printf("] - ");
+        reshuffle[size] = 0;
+        tour_len = 0;
+        for(int i = 0; i < size; ++i){
+            tour_len += graph[reshuffle[i]][reshuffle[i+1]]; 
         }
-        printf("way is %d\n", way);
-        if(way < minimalWay){
-            minimalWay = way;
+        printf("%d\n", tour_len);
+        if(tour_len < minimal_tour){
+            minimal_tour = tour_len;
         }
-    }while(std::next_permutation(reshuffle+1,reshuffle+*size));
+    }while(std::next_permutation(reshuffle+1,reshuffle+size));
     delete[] reshuffle;
-    printf("minimalway  - %d\n",minimalWay);
+    printf("Length of minimal tour is: %d\n",minimal_tour);
 }
-//TODO : greedyMethod
-void greedyMethod(int** const graph, int const *size){
-    int** graphCopy = graph;
-    int way = 0;
-    int from = 0;
-    int to = 0;
-    std::string path = std::to_string(from+1)+"-";
-    for(int i = 0; i < *size -1 ; ++i){
-        int minimalPath = 1e5* *size;
-        for(int j = 1; j < *size; ++j){
-            if(from != j){
-                if(minimalPath > graphCopy[from][j] && graphCopy[from][j] != -1){
-                    minimalPath = graphCopy[from][j];
-                    to = j;
-                }
-            }
-        }
-        for(int k = 0; k < *size; ++k){ // no way
-            graphCopy[k][to] = -1;
-        }
-        way += minimalPath;
-        from = to;
-        path += std::to_string(from+1);
-        path += "-";
-    }
-    way += graphCopy[from][0];
-    path += "1";
-    printf("minimalWay - %d\n",way);
-    std:: cout << "path is " << path << std::endl;
-}
+
+// void greedyMethod(int const size){  
+//     int** graphCopy = graph;
+//     int way = 0;
+//     int from = 0;
+//     int to = 0;
+//     std::string path = std::to_string(from+1)+"-";
+//     for(int i = 0; i < *size -1 ; ++i){
+//         int minimalPath = 1e5* *size;
+//         for(int j = 1; j < *size; ++j){
+//             if(from != j){
+//                 if(minimalPath > graphCopy[from][j] && graphCopy[from][j] != -1){
+//                     minimalPath = graphCopy[from][j];
+//                     to = j;
+//                 }
+//             }
+//         }
+//         for(int k = 0; k < *size; ++k){ // no way
+//             graphCopy[k][to] = -1;
+//         }
+//         way += minimalPath;
+//         from = to;
+//         path += (std::to_string(from+1)+"-");
+//     }
+//     way += graphCopy[from][0];
+//     path += "1";
+//     printf("minimalWay - %d\n",way);
+//     std:: cout << "path is " << path << std::endl;
+// }

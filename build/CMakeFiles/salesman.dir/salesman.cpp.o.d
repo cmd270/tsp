@@ -165,4 +165,8 @@ CMakeFiles/salesman.dir/salesman.cpp.o: \
  /usr/include/limits.h /usr/include/bits/posix1_lim.h \
  /usr/include/bits/local_lim.h /usr/include/linux/limits.h \
  /usr/include/bits/posix2_lim.h /usr/include/bits/xopen_lim.h \
- /usr/include/bits/uio_lim.h
+ /usr/include/bits/uio_lim.h /usr/include/c++/12.2.0/vector \
+ /usr/include/c++/12.2.0/bits/stl_uninitialized.h \
+ /usr/include/c++/12.2.0/bits/stl_vector.h \
+ /usr/include/c++/12.2.0/bits/stl_bvector.h \
+ /usr/include/c++/12.2.0/bits/vector.tcc

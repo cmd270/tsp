@@ -227,8 +227,21 @@ CMakeFiles/salesman.dir/salesman.cpp.o: /home/mindmirage/code/c/salesman/salesma
   /usr/include/linux/limits.h \
   /usr/include/bits/posix2_lim.h \
   /usr/include/bits/xopen_lim.h \
-  /usr/include/bits/uio_lim.h
+  /usr/include/bits/uio_lim.h \
+  /usr/include/c++/12.2.0/vector \
+  /usr/include/c++/12.2.0/bits/stl_uninitialized.h \
+  /usr/include/c++/12.2.0/bits/stl_vector.h \
+  /usr/include/c++/12.2.0/bits/stl_bvector.h \
+  /usr/include/c++/12.2.0/bits/vector.tcc
 
+
+/usr/include/c++/12.2.0/bits/vector.tcc:
+
+/usr/include/c++/12.2.0/bits/stl_bvector.h:
+
+/usr/include/c++/12.2.0/bits/stl_uninitialized.h:
+
+/usr/include/c++/12.2.0/vector:
 
 /usr/include/bits/uio_lim.h:
 
@@ -357,6 +370,8 @@ CMakeFiles/salesman.dir/salesman.cpp.o: /home/mindmirage/code/c/salesman/salesma
 /usr/include/c++/12.2.0/bits/cxxabi_init_exception.h:
 
 /usr/include/c++/12.2.0/bits/exception_ptr.h:
+
+/usr/include/c++/12.2.0/bits/stl_vector.h:
 
 /usr/include/c++/12.2.0/exception:
 

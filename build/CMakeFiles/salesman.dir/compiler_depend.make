@@ -100,6 +100,9 @@ CMakeFiles/salesman.dir/salesman.cpp.o: /home/mindmirage/code/c/salesman/salesma
   /usr/include/bits/timex.h \
   /usr/include/bits/types/struct_tm.h \
   /usr/include/bits/types/struct_itimerspec.h \
+  /usr/include/c++/12.2.0/cstring \
+  /usr/include/string.h \
+  /usr/include/strings.h \
   /usr/include/c++/12.2.0/math.h \
   /usr/include/c++/12.2.0/cmath \
   /usr/include/math.h \
@@ -232,8 +235,23 @@ CMakeFiles/salesman.dir/salesman.cpp.o: /home/mindmirage/code/c/salesman/salesma
   /usr/include/c++/12.2.0/bits/stl_uninitialized.h \
   /usr/include/c++/12.2.0/bits/stl_vector.h \
   /usr/include/c++/12.2.0/bits/stl_bvector.h \
-  /usr/include/c++/12.2.0/bits/vector.tcc
+  /usr/include/c++/12.2.0/bits/vector.tcc \
+  /usr/include/c++/12.2.0/set \
+  /usr/include/c++/12.2.0/bits/stl_tree.h \
+  /usr/include/c++/12.2.0/ext/aligned_buffer.h \
+  /usr/include/c++/12.2.0/bits/node_handle.h \
+  /usr/include/c++/12.2.0/bits/stl_set.h \
+  /usr/include/c++/12.2.0/bits/stl_multiset.h \
+  /usr/include/c++/12.2.0/bits/erase_if.h
 
+
+/usr/include/c++/12.2.0/bits/stl_set.h:
+
+/usr/include/c++/12.2.0/ext/aligned_buffer.h:
+
+/usr/include/c++/12.2.0/bits/erase_if.h:
+
+/usr/include/c++/12.2.0/set:
 
 /usr/include/c++/12.2.0/bits/vector.tcc:
 
@@ -304,6 +322,8 @@ CMakeFiles/salesman.dir/salesman.cpp.o: /home/mindmirage/code/c/salesman/salesma
 /usr/include/bits/posix1_lim.h:
 
 /usr/include/c++/12.2.0/bits/new_allocator.h:
+
+/usr/include/c++/12.2.0/bits/node_handle.h:
 
 /usr/include/c++/12.2.0/bits/allocator.h:
 
@@ -395,6 +415,10 @@ CMakeFiles/salesman.dir/salesman.cpp.o: /home/mindmirage/code/c/salesman/salesma
 
 /usr/include/c++/12.2.0/ios:
 
+/usr/include/c++/12.2.0/iostream:
+
+/usr/include/c++/12.2.0/tr1/riemann_zeta.tcc:
+
 /usr/include/bits/wctype-wchar.h:
 
 /usr/include/sys/types.h:
@@ -413,6 +437,8 @@ CMakeFiles/salesman.dir/salesman.cpp.o: /home/mindmirage/code/c/salesman/salesma
 
 /usr/include/c++/12.2.0/bits/stl_iterator_base_types.h:
 
+/usr/include/string.h:
+
 /usr/include/bits/mathcalls-helper-functions.h:
 
 /usr/include/c++/12.2.0/cstdint:
@@ -420,6 +446,8 @@ CMakeFiles/salesman.dir/salesman.cpp.o: /home/mindmirage/code/c/salesman/salesma
 /usr/lib/gcc/x86_64-pc-linux-gnu/12.2.0/include/stddef.h:
 
 /usr/include/stdlib.h:
+
+/usr/include/c++/12.2.0/bits/stl_tree.h:
 
 /usr/include/c++/12.2.0/cstdlib:
 
@@ -452,8 +480,6 @@ CMakeFiles/salesman.dir/salesman.cpp.o: /home/mindmirage/code/c/salesman/salesma
 /usr/include/bits/long-double.h:
 
 /usr/include/bits/typesizes.h:
-
-/usr/include/c++/12.2.0/x86_64-pc-linux-gnu/bits/cpu_defines.h:
 
 /usr/include/c++/12.2.0/new:
 
@@ -611,6 +637,10 @@ CMakeFiles/salesman.dir/salesman.cpp.o: /home/mindmirage/code/c/salesman/salesma
 
 /usr/include/bits/types/struct_timespec.h:
 
+/usr/include/c++/12.2.0/x86_64-pc-linux-gnu/bits/cpu_defines.h:
+
+/usr/include/c++/12.2.0/cstring:
+
 /usr/include/bits/pthreadtypes.h:
 
 /usr/include/bits/struct_mutex.h:
@@ -655,6 +685,8 @@ CMakeFiles/salesman.dir/salesman.cpp.o: /home/mindmirage/code/c/salesman/salesma
 
 /usr/include/bits/timex.h:
 
+/usr/include/strings.h:
+
 /usr/include/c++/12.2.0/cmath:
 
 /usr/include/c++/12.2.0/string:
@@ -664,6 +696,8 @@ CMakeFiles/salesman.dir/salesman.cpp.o: /home/mindmirage/code/c/salesman/salesma
 /usr/include/c++/12.2.0/bits/algorithmfwd.h:
 
 /usr/include/bits/libm-simd-decl-stubs.h:
+
+/usr/include/c++/12.2.0/bits/stl_multiset.h:
 
 /usr/include/c++/12.2.0/tr1/special_function_util.h:
 
@@ -685,8 +719,6 @@ CMakeFiles/salesman.dir/salesman.cpp.o: /home/mindmirage/code/c/salesman/salesma
 
 /usr/include/c++/12.2.0/tr1/beta_function.tcc:
 
-/usr/include/c++/12.2.0/iostream:
-
 /usr/include/bits/libc-header-start.h:
 
 /usr/include/c++/12.2.0/tr1/hypergeometric.tcc:
@@ -696,5 +728,3 @@ CMakeFiles/salesman.dir/salesman.cpp.o: /home/mindmirage/code/c/salesman/salesma
 /usr/include/c++/12.2.0/ostream:
 
 /usr/include/c++/12.2.0/tr1/poly_laguerre.tcc:
-
-/usr/include/c++/12.2.0/tr1/riemann_zeta.tcc:

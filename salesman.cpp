@@ -1,10 +1,12 @@
 #include <algorithm>
 #include <stdio.h>
 #include <ctime>
+#include <cstring>
 #include <math.h>
 #include <iostream>
 #include <limits.h>
 #include <vector>
+#include <set>
 
 #define X 1280
 #define Y 720
@@ -13,6 +15,9 @@ void generate_graph(int const size);
 void show_graph(int const size);
 void precise_method(int const size); // Метод перебора (точный)
 void greedy_method( int const size); // Жадный метод (неточный)
+int** prim_algorithm(int const size);
+void wooden_algorithm(int const size);
+void dfs(int const size);
 
 int graph[100][100];    // Граф максимального числа городов
 int size = 5;           // Счетчик городов
@@ -20,8 +25,9 @@ int size = 5;           // Счетчик городов
 int main(void){
     generate_graph(size);
     show_graph(size);
-    precise_method(size);
-    greedy_method(size);
+    // precise_method(size);
+    // greedy_method(size);
+    wooden_algorithm(size);
 }
 
 // Генерация графа.
@@ -119,4 +125,58 @@ void greedy_method(int const size){
     tour_len += graph[to][0];
     printf("Length of minimal tour: %d\n",tour_len);
     std::cout << "Tour: " << tour+"1]" << std::endl;
+}
+
+int** prim_algorithm(int const size){
+    int sum_mst = 0, prev_min = 0;
+    bool used_to[size];
+    bool used_from[size];
+    memset(used_from, 0, sizeof(bool) * size);
+    int** min_span_tree = new int*[size];
+    for(int i = 0; i < size; i++)
+        min_span_tree[i] = new int[size];
+    used_from[0] = 1;
+    for (int i = 0; i < size; i++){
+        int h = -1, e = -1, min_edge = INT_MAX;
+        for(int k = 0; k < size; k++){
+            for(int j = 0; j < size; j++){
+                if(graph[k][j] < min_edge && graph[k][j] && used_from[k] && !used_to[j] ){
+                    min_edge = graph[k][j];
+                    h = k;
+                    e = j;
+                }
+            } 
+        }
+        if( h != -1 && e != -1){
+            min_span_tree[h][e] = min_edge, min_span_tree[e][h] = min_edge;
+            used_to[e] = 1, used_from[e] = 1;
+            if(prev_min != min_edge){
+                sum_mst += min_edge;
+                prev_min = min_edge;
+            }
+        }
+    }
+    printf("\n");
+    for(int i = 0; i < size; i++){
+        for(int j = 0; j < size; j++){
+            printf("%10d",min_span_tree[i][j]);
+        }
+        printf("\n");
+    }
+    printf("SUM MST = %d\n",sum_mst);
+    return min_span_tree;
+}
+
+// std::vector<int> bypass(int const size, int** min_span_tree){
+//     bool used[size];
+//     std::vector<int> path = {0}; 
+//     for(int i = 0; i < size; ++i){
+
+//     }
+// }
+
+
+
+void wooden_algorithm(int const size){
+    prim_algorithm(size);
 }

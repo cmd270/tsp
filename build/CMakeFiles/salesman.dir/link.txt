@@ -1,1 +1,1 @@
-/usr/bin/c++ -rdynamic CMakeFiles/salesman.dir/salesman.cpp.o -o salesman 
+/usr/bin/c++ -g -rdynamic CMakeFiles/salesman.dir/salesman.cpp.o -o salesman 

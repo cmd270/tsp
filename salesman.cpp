@@ -7,6 +7,7 @@
 #include <limits.h>
 #include <vector>
 #include <set>
+#include <fstream>
 
 #define X 1280
 #define Y 720
@@ -17,7 +18,7 @@ void precise_method(int const size); // Метод перебора (точны�
 void greedy_method( int const size); // Жадный метод (неточный)
 int** prim_algorithm(int const size);
 void wooden_algorithm(int const size);
-void dfs(int const size);
+void euler_loop(int const size, int** mst);
 
 int graph[100][100];    // Граф максимального числа городов
 int size = 5;           // Счетчик городов
@@ -167,16 +168,68 @@ int** prim_algorithm(int const size){
     return min_span_tree;
 }
 
-// std::vector<int> bypass(int const size, int** min_span_tree){
-//     bool used[size];
-//     std::vector<int> path = {0}; 
-//     for(int i = 0; i < size; ++i){
+void euler_loop(int const size, int** mst){
+    // int fmst[5][5] = {
+    // {0,0,0,720,0},
+    // {0,0,160,198,125},
+    // {0,160,0,0,0},
+    // {720,198,0,0,0},
+    // {0,125,0,0,0}};
+    printf("***********************************************\n");
+    // for(int i = 0; i < size; i++){
+    //     for(int j = 0; j < size; j++){
+    //         printf("%10d",fmst[i][j]);
+    //     }
+    //     printf("\n");
+    // }
+    std::ofstream file;
+    file.open("matrix.txt");
+    if(file.is_open()){
+        for(int i = 0; i < size; i++){
+            for(int j = 0; j < size; j++){
+                file <<  " " <<  mst[i][j];
+            }
+            file << std::endl;
+        }
+        file << std::endl;
+    }
+    int prev_v = 0, v = 0;
+    int count_v = 1;
+    std::vector<int> path = {0};
+    while(count_v != size){
+        int temp_v = -1;
+        for(int j = 0; j < size; ++j){
+            if(mst[v][j] != 0){
+                temp_v = j;
+            }
+        }
+        if(temp_v != -1){
+            printf("mst[%d][%d] = 0, mst[%d][%d] = 0\n",prev_v,temp_v,temp_v,prev_v);
+            prev_v = v;
+            v = temp_v;
+            count_v++;
+            mst[prev_v][v] = 0, mst[v][prev_v] = 0;
+            path.push_back(v);
+        }
+        else{
+            path.push_back(prev_v);
+            v = prev_v;
+        }
+        for(int i = 0; i < size; i++){
+            for(int j = 0; j < size; j++){
+                printf("%10d",mst[i][j]);
+            }
+            printf("\n");
+        }
+        printf("----\n");
+    }
 
-//     }
-// }
-
-
+    for(auto item : path){
+        printf("%2d ",item+1);
+    }
+    printf("\n");
+}
 
 void wooden_algorithm(int const size){
-    prim_algorithm(size);
+    euler_loop(size, prim_algorithm(size));
 }

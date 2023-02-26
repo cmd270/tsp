@@ -1,3 +1,3 @@
-/home/mindmirage/code/c/salesman/build/CMakeFiles/salesman.dir
-/home/mindmirage/code/c/salesman/build/CMakeFiles/edit_cache.dir
-/home/mindmirage/code/c/salesman/build/CMakeFiles/rebuild_cache.dir
+C:/Users/mindmirage/code/salesman-problem/build/CMakeFiles/salesman.dir
+C:/Users/mindmirage/code/salesman-problem/build/CMakeFiles/ALL_BUILD.dir
+C:/Users/mindmirage/code/salesman-problem/build/CMakeFiles/ZERO_CHECK.dir

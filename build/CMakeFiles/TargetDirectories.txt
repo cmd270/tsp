@@ -1,3 +1,0 @@
-C:/Users/mindmirage/code/salesman-problem/build/CMakeFiles/salesman.dir
-C:/Users/mindmirage/code/salesman-problem/build/CMakeFiles/ALL_BUILD.dir
-C:/Users/mindmirage/code/salesman-problem/build/CMakeFiles/ZERO_CHECK.dir

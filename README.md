@@ -1,26 +1,24 @@
-# **Travelling Salesman Problem**
-> *Замечание: данный репозиторий был создан с целью размещения рассчетно-графической работы по дисциплине ТСВПС*
-## **Условия**
-1. Генерация смежной матрицы случайным путем.
-2. На каждый n+1 город генерировать новую матрицу.
-## **Задания**
-Реализовать следующие методы решения задачи коммивояжера и сравнить их по скорости:
-1. Полный перебор
-2. Жадный алгоритм
-3. Деревянный алгоритм
+# Travelling Salesman Problem
 
-## **Сборка и запуск проекта**
-1. Клонироавние репозитория  
+## Conditions
+
+1. Generation of adjacent matrix randomly.
+2. For every n+1 cities, generate a new matrix.
+
+## Tasks
+
+Implement the following methods to solve the problem:
+- [x] Brute force
+- [x] Greedy algorithm
+- [x] Wooden algorithm
+
+## Build && run
+
 ```bash
 $ git clone https://github.com/cmd270/tsp/
-```
-2. Сборка проекта
-```bash
+$ cd tsp
 $ mkdir build && cd build
 $ cmake .. 
 $ make
-```
-3. Запуск 
-```bash
 $ ./STP
 ```
